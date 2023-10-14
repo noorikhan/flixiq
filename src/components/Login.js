@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidateData } from "../utils/validate";
 
 const Login = () => {
   const [isSignin, setSignin] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const email = useRef(null);
+  const password = useRef(null);
 
   const toggleForm = () => {
     setSignin(!isSignin);
+  };
+
+  const handleValidation = () => {
+    //validate the form data
+    const message = checkValidateData(
+      email.current.value,
+      password.current.value
+    );
+
+    setErrorMessage(message);
   };
 
   return (
@@ -18,7 +33,12 @@ const Login = () => {
         />
       </div>
 
-      <form className="absolute p-12 my-40 mx-auto right-0 left-0 w-3/12 bg-black text-white bg-opacity-80">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="absolute p-12 my-40 mx-auto right-0 left-0 w-3/12 bg-black text-white bg-opacity-80"
+      >
         <h1 className="my-2 font-bold text-3xl">
           {isSignin ? "Sign In" : "Sign Up"}
         </h1>
@@ -30,23 +50,29 @@ const Login = () => {
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Email Address"
           className="p-2 my-2 w-full bg-gray-600"
         />
         <input
+          ref={password}
           type="text"
           placeholder="Password"
           className="p-2 my-2 w-full bg-gray-600"
         />
-        <button className="p-2 my-4 bg-red-700 w-full rounded-lg">
+        <p className="text-lg text-red-500 font-medium py-2">{errorMessage}</p>
+        <button
+          className="p-2 my-4 bg-red-700 w-full rounded-lg"
+          onClick={handleValidation}
+        >
           {isSignin ? "Sign In" : "Sign Up"}
         </button>
 
         <p className="p-2 my-2 cursor-pointer" onClick={toggleForm}>
           {isSignin
-            ? "New to Netflix? Sign Up now."
-            : "New to Netflix? Sign In now."}
+            ? "New to Netflix? Sign Up Now."
+            : "Already registerd? Sign In Now."}
         </p>
       </form>
     </div>
