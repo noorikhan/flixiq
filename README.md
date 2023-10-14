@@ -7,4 +7,7 @@
 - Login page: 
     - SignIn Form
     - SignUp Form
-    - Validation
+    - useRef Hook
+    - Form Validation
+    - Firebase setup
+- Deployed app to Production
