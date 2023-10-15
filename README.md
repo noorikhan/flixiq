@@ -10,14 +10,17 @@
   - useRef Hook
   - Form Validation
 - Firebase setup
-- Deployed app to Production
+- Deployed app to Production : https://netflix-gpt-f8df9.web.app/
 - Create Signup User Account
 - Implement Sign In user API
 - Created Redux Store with userSlice
 - Implemented Sign Out
 - Update User Profile
-- BugFix: 
-    - Sign up user displayname and profile picture update
-    - if user is not logged in Redirect /browse to Login Page vice-varsa
+- BugFix:
+  - Sign up user displayname and profile picture update
+  - if user is not logged in Redirect /browse to Login Page vice-varsa
 - Unsubscribe to the onAouthStateChanged callback
 - Added Hardcoded values to the constant file
+- Register TMDB and create App and get API key and Token
+- Create Hook for Fetch data from Nowplaying Movies List API
+- Store Movies in movies store reducer
