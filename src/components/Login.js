@@ -7,14 +7,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { LOGIN_BG, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignin, setSignin] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -52,8 +52,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV996E0SKw-EF3XckwCrz4kaez67-VAxh_3Q&usqp=CAU",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -65,7 +64,6 @@ const Login = () => {
                   profile: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -86,7 +84,7 @@ const Login = () => {
         .then((userCredential) => {
           //signed in
           const user = userCredential.user;
-          navigate("/browse");
+        
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -100,10 +98,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/ab180a27-b661-44d7-a6d9-940cb32f2f4a/7fb62e44-31fd-4e1f-b6ad-0b5c8c2a20ef/IN-en-20231009-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-          alt="bg"
-        />
+        <img src={LOGIN_BG} alt="bg" />
       </div>
 
       <form
