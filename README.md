@@ -30,3 +30,11 @@
 - Update store with Trailer Data
 - Embedded the Youtube video and make it autoplay and mute
 - Added Tailwind Classes to make main container look awesome
+- Build Secondary Container
+- Build Movie List
+- Added Image CDN link to constant file
+- Build Movie card
+- GPT Toggle button
+- GPT Slice
+- GPT Searchbar
+- GPT Search page

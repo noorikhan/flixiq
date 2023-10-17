@@ -3,13 +3,26 @@ import Header from "./Header";
 import useNowPlayingMovies from "../hook/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import { useSelector } from "react-redux";
+import GptSearchbar from "./GptSearchbar";
 
 const Browse = () => {
+  const gpt = useSelector((store) => store.gpt);
+
   useNowPlayingMovies();
 
   return (
     <div>
       <Header />
+      {gpt?.showGptSearch ? (
+        <GptSearchbar />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
+
       {/* 
       
       MainContainer
@@ -20,9 +33,6 @@ const Browse = () => {
           - Cards * n
 
       */}
-
-      <MainContainer />
-      <SecondaryContainer />
     </div>
   );
 };
