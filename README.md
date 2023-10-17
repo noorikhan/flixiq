@@ -38,3 +38,4 @@
 - GPT Slice
 - GPT Searchbar
 - GPT Search page
+- Multi-Language Feature for GPT Search
