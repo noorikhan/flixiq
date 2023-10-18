@@ -1,12 +1,14 @@
-import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
 import openai from "../utils/openai";
 import { API_OPTIONS } from "../utils/constants";
+import { searchMovies } from "../utils/gptSlice";
 
 const GptSearchbar = () => {
   const langKey = useSelector((store) => store.config?.lang);
   const searchText = useRef(null);
+  const dispatch = useDispatch();
 
   const searchMovieTMDB = async (movie) => {
     const url =
@@ -39,13 +41,15 @@ const GptSearchbar = () => {
     // Andaz Apna Apna, Bhoot, etc
     const getMovies = gptResult.choices[0].message.content.split(","); //["Andaz Apna Apna", "Bhoot",...]
 
-    console.log(getMovies);
+    // console.log(getMovies);
 
     //For each movie search in TMDB Api
     const promiseArray = getMovies.map((movie) => searchMovieTMDB(movie)); //[Promise, Promise,...]
 
     const tmdbResult = await Promise.all(promiseArray);
-    console.log(tmdbResult);
+
+    dispatch(searchMovies({ movieName: getMovies, movieResults: tmdbResult }));
+    // console.log(tmdbResult);
   };
 
   return (

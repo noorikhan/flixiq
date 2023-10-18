@@ -25,4 +25,4 @@ export const LANG_LIST = [
 ];
 
 export const OPENAI_API_KEY =
-  "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";
+  "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";
