@@ -24,4 +24,5 @@ export const LANG_LIST = [
   { identifier: "kn", name: "Kannada" },
 ];
 
-
+export const OPENAI_API_KEY =
+  "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";

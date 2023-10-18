@@ -39,3 +39,7 @@
 - GPT Searchbar
 - GPT Search page
 - Multi-Language Feature for GPT Search
+- Account is created in openai, get API KEY and installed openai npm package for chatgpt access.
+- GPT Api is integrated to get expected response for search input text.
+- Integrated Search TMDB API for getting more details about the recommended gpt movie.
+- Used Promise.all() to reslove array of promise paralally.
