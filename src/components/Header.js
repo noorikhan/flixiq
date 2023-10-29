@@ -7,6 +7,14 @@ import { LANG_LIST, LOGO } from "../utils/constants";
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { switchLanguage } from "../utils/configSlice";
+import {
+  ArrowLeftOnRectangleIcon,
+  HomeIcon,
+  MagnifyingGlassCircleIcon,
+  MagnifyingGlassIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
+import Dropdown from "./Dropdown";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -56,12 +64,13 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex justify-between w-screen absolute z-10 px-2 py-2 bg-gradient-to-b from-black">
+      <div className="flex justify-between w-full absolute z-10 px-2 py-2 bg-gradient-to-b from-black">
         <img className="w-44" src={LOGO} alt="logo" />
         {user && (
           <div className="flex p-2">
             {showGptSearch && (
               <div className="m-2">
+                {/* <Dropdown data={LANG_LIST} /> */}
                 <select onChange={handleLanguage} className="px-4 py-2">
                   {LANG_LIST.map((lang) => (
                     <option key={lang.identifier} value={lang.identifier}>
@@ -71,16 +80,19 @@ const Header = () => {
                 </select>
               </div>
             )}
-            <button
-              onClick={toggleGpt}
-              className="text-white bg-purple-500 px-6 my-3 mx-6"
-            >
-              {showGptSearch ? "Home" : "Gpt Search"}
-            </button>
-            <img className="w-12 h-12" src={user?.profile} alt="profile pic" />
-            <button onClick={handleSignout} className="font-bold text-red-800">
-              Sign Out
-            </button>
+            <div onClick={toggleGpt}>
+              {showGptSearch ? (
+                <HomeIcon className="text-white h-11 w-12" />
+              ) : (
+                <MagnifyingGlassIcon className="text-white w-11 h-12" />
+              )}
+            </div>
+            <UserCircleIcon className="h-12 w-12 text-white" />
+
+            <ArrowLeftOnRectangleIcon
+              onClick={handleSignout}
+              className="text-white h-12 w-12"
+            />
           </div>
         )}
       </div>
