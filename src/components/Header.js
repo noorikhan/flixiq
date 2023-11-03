@@ -65,13 +65,16 @@ const Header = () => {
   return (
     <>
       <div className="flex justify-between w-full absolute z-10 px-2 py-2 bg-gradient-to-b from-black">
-        <img className="w-44" src={LOGO} alt="logo" />
+        <img className="w-24 h-11 md:h-16 md:w-44" src={LOGO} alt="logo" />
         {user && (
           <div className="flex p-2">
             {showGptSearch && (
-              <div className="m-2">
+              <div className="mx-2 md:m-2">
                 {/* <Dropdown data={LANG_LIST} /> */}
-                <select onChange={handleLanguage} className="px-4 py-2">
+                <select
+                  onChange={handleLanguage}
+                  className="md:px-4 md:py-2 px-1 py-1"
+                >
                   {LANG_LIST.map((lang) => (
                     <option key={lang.identifier} value={lang.identifier}>
                       {lang.name}
@@ -82,16 +85,16 @@ const Header = () => {
             )}
             <div onClick={toggleGpt}>
               {showGptSearch ? (
-                <HomeIcon className="text-white h-11 w-12" />
+                <HomeIcon className="text-white md:h-11 md:w-12 h-8 w-8" />
               ) : (
-                <MagnifyingGlassIcon className="text-white w-11 h-12" />
+                <MagnifyingGlassIcon className="text-white md:w-11 md:h-12 h-8 w-8" />
               )}
             </div>
-            <UserCircleIcon className="h-12 w-12 text-white" />
+            <UserCircleIcon className="hidden md:flex h-12 w-12 text-white" />
 
             <ArrowLeftOnRectangleIcon
               onClick={handleSignout}
-              className="text-white h-12 w-12"
+              className="text-white h-8 w-8 md:h-12 md:w-12"
             />
           </div>
         )}
