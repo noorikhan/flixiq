@@ -11,8 +11,7 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYzA3NmQ0YWE0YTdjYzc1OTZiMmU4NTY4ZDc2Njc5NiIsInN1YiI6IjY1MmJmNDJmZjI4ODM4MDJhMzI4MmM2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JyxLqYVOzD-4-aK9XRaQCzRpip5sIktPClIcJ0xdcsM",
+    Authorization: process.env.REACT_APP_TOKEN,
   },
 };
 
@@ -23,6 +22,3 @@ export const LANG_LIST = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "kn", name: "Kannada" },
 ];
-
-export const OPENAI_API_KEY =
-  "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";
