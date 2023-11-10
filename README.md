@@ -43,3 +43,5 @@
 - GPT Api is integrated to get expected response for search input text.
 - Integrated Search TMDB API for getting more details about the recommended gpt movie.
 - Used Promise.all() to reslove array of promise paralally.
+- Made responsive all pages.
+- Move all imporant data to env file.
