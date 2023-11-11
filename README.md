@@ -10,7 +10,7 @@
   - useRef Hook
   - Form Validation
 - Firebase setup
-- Deployed app to Production : https://netflix-gpt-f8df9.web.app/
+- Deployed app to Production : https://flixiq-2b1ad.web.app
 - Create Signup User Account
 - Implement Sign In user API
 - Created Redux Store with userSlice
